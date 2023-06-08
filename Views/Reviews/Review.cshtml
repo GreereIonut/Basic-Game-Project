@@ -1,0 +1,48 @@
+@model ReviewModel
+
+@{
+    ViewData["Title"]="CreateGame";
+}
+<hr  />
+<div class="row">
+    <div class="col-6">
+
+        <div class="card">
+            <div class="card-header">
+                <h5>Insert new Review</h5>
+
+            </div>
+
+            <div class="card-body">
+        <form asp-controller="Reviews" asp-action="InsertReview" method="post">
+              <input type="hidden" asp-for="gameId" value="@Model.gameId" />
+            
+            <div class=" mb-3">
+                <label class="form-label">User Name</label>
+                <input asp-for=UserName type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Stars</label>
+                <input asp-for=Stars type="text" class="form-control">
+            </div>
+             <div class="mb-3">
+                <label class="form-label">Review</label>
+                <input asp-for=review type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Insert</button>
+            </div>
+        </form>
+
+            </div>
+
+            <div class="card">
+
+            </div>
+
+        </div>
+
+            </div>
+</div>
+

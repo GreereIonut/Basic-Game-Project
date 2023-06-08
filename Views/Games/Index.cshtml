@@ -1,0 +1,35 @@
+  @model IEnumerable<Games.Models.GameModel>
+  
+  @{
+        ViewData["Title"] = "Games";
+    }
+
+    <h1>@ViewData["Title"]</h1>
+
+
+
+
+    @foreach (var game in Model){
+
+            <div class="game-info "  >
+              <h5>@game.Title</h5>   </div>
+              <div class="ez">
+                 <div class="text-box  ">
+            <form asp-controller="Reviews" asp-action="Review" asp-route-gameId="@game.Id" > 
+                <button type="submit">Write a Review!</button>
+            </form>
+                 </div>
+                 <div class="text-box">
+                   <form asp-controller="Reviews" asp-action="SeeReviews" asp-route-gameId="@game.Id" > 
+                <button type="submit">See Reviews!</button>
+            </form>
+                   
+                 </div>
+           
+
+        </div>
+            <div class=" mb-3">
+                <h5>@game.Genere</h5></div>
+    
+    }
+

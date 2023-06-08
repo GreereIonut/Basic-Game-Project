@@ -1,0 +1,16 @@
+ @model IEnumerable<Games.Models.ReviewModel>
+
+ @{
+        ViewData["Title"] = "Reviews";
+    }
+
+
+@foreach (var Review in Model)
+{
+    <div>
+        <h5>@Review.UserName</h5>
+        <h5>@Review.Stars</h5>
+        <h5>@Review.review</h5>
+    </div>
+    
+}
