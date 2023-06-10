@@ -26,9 +26,11 @@ namespace Games.Controllers
             string sortOrder,
             string currentFilter,
             string searchString,
-            int? pageNumber)
+            int? pageNumber,
+            int GameID)
         {
 
+           
             ViewData["CurrentSort"]=sortOrder;
             ViewData["TitleSortParam"]=String.IsNullOrEmpty(sortOrder)? "title_desc":"";
             ViewData["GenereSortParam"]=sortOrder=="Genere"? "genere_desc":"Genere";
@@ -85,6 +87,9 @@ namespace Games.Controllers
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+
+        
        
     }
 }
