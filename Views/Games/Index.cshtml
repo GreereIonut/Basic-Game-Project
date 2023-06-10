@@ -2,16 +2,16 @@
 
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Games";
 }
 
-<h2>Index</h2>
+<h2>Games</h2>
 
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
             Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-default" /> |
+            <input type="submit" value="Search" class="btn btn-primary" /> |
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
@@ -22,7 +22,6 @@
                 <th>
                     <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" >Title</a>
                 </th>
-                Title
                 <th>
                     <a asp-action="Index" asp-route-sortOrder="@ViewData["GenereSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Genere</a>
 
@@ -42,8 +41,8 @@
            
             <td>
                 @* <a asp-action="Edit" asp-route-gmaeId="@item.Id">Edit</a> | *@
-                <a asp-action="Review" asp-controller="Reviews" asp-route-gameId="@item.Id">Insert</a> |
-                <a asp-action="SeeReviews" asp-controller="Reviews"  asp-route-gameId="@item.Id">See Reviews</a>
+                <a asp-action="Review" asp-controller="Reviews" asp-route-gameId="@item.Id">Write a review!</a> |
+                <a asp-action="SeeReviews" asp-controller="Reviews"  asp-route-gameId="@item.Id">See Reviews!</a>
             </td>
         </tr>
 }
@@ -55,20 +54,19 @@
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
-<a asp-action="Index"
-   asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-pageNumber="@(Model.PageIndex - 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-primary @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index"
-   asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-pageNumber="@(Model.PageIndex + 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-primary @nextDisabled">
-    Next
-</a>
+
+@for(int i=1;i<=Model.TotalPages;i++)
+{
+    <a asp-action="Index"
+    asp-route-sortOrder="@ViewData["CurrentSort"]"
+    asp-route-currentFilter="@ViewData["CurrentFilter"]"
+    asp-route-pageNumber=@i
+    class="btn btn-primary @(i == Model.PageIndex ? "active" : "")"
+    > 
+    <small>@i</small>
+
+    </a>
+}
 
 
     
