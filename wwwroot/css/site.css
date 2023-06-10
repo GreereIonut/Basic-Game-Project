@@ -8,7 +8,11 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -21,16 +25,14 @@ body {
   margin-bottom: 60px;
 }
 
-.game-info{
+.game-info {
   display: inline-block;
-    vertical-align: top;
-    
+  vertical-align: top;
 }
 
-.reviewsBtn{
+.reviewsBtn {
   display: flex;
-    justify-content: center;
-
+  justify-content: center;
 }
 
 .ez {
@@ -44,8 +46,18 @@ body {
   margin: 0 auto;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  flex: 1 0 300px;
+}
 
 
-
-
-
+.btn-center{
+  display: grid;
+  place-items: center;
+}

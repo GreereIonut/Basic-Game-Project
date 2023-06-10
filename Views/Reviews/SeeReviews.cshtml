@@ -5,12 +5,48 @@
     }
 
 
-@foreach (var Review in Model)
-{
-    <div>
-        <h5>@Review.UserName</h5>
-        <h5>@Review.Stars</h5>
-        <h5>@Review.review</h5>
-    </div>
-    
+
+@* @foreach (var Review in Model){
+   <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">@Review.UserName</div>
+  <div class="card-body">
+    @for(int i=0;i<Review.Stars;i++)
+    {
+        <h5 class="card-title" style="display: inline;">⭐</h5>
+    }
+    <p class="card-text">@Review.review</p>
+  </div>
+</div>
+} *@
+
+
+
+    <table class="table ">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col ">#</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Stars</th>
+      <th scope="col">Review</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+@{
+    int rowNumber=1;
+     foreach (var Review in Model){
+    <tr class="table-secondary">
+      <th scope="row">@rowNumber</th>
+      <td>@Review.UserName</td>
+      <td>@Review.Stars⭐ </td>
+      <td>@Review.review</td>
+      <td>@Review.createdDateTime</td>
+    </tr>
+    rowNumber++;
+    }
 }
+   
+  </tbody>
+</table>
+    
+

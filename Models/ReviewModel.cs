@@ -20,6 +20,8 @@ namespace Games.Models
         [Required]
 
         public int Stars { get; set; }
+
+        public DateTime createdDateTime { get; set; }=DateTime.Now;
         [Required]
         [ForeignKey("Games")]
         public int gameId { get; set; }

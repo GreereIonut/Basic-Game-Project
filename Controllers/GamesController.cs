@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Games.Models;
 using Games.Models.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Games.Controllers
@@ -21,11 +22,53 @@ namespace Games.Controllers
         }
 
         //Dislpay
-        public IActionResult Index()
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            string currentFilter,
+            string searchString,
+            int? pageNumber)
         {
-            IEnumerable<GameModel> game = _db.Games;
 
-            return View(game);
+            ViewData["CurrentSort"]=sortOrder;
+            ViewData["TitleSortParam"]=String.IsNullOrEmpty(sortOrder)? "title_desc":"";
+            ViewData["GenereSortParam"]=sortOrder=="Genere"? "genere_desc":"Genere";
+            ViewData["CurrentFilter"]=searchString;
+
+            if(searchString!=null)
+            {
+                pageNumber=1;
+            }
+            else
+            {
+                searchString=currentFilter;
+            }
+
+            var games=from s in _db.Games
+                      select s;
+            
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                games=games.Where(s=>s.Title.Contains(searchString)
+                                     || s.Genere.Contains(searchString));
+            }
+
+            switch(sortOrder)
+            {
+                case "title_desc":
+                    games=games.OrderByDescending(s=>s.Title);
+                    break;
+                case "Genere":
+                    games=games.OrderBy(s=> s.Genere);
+                    break;
+                case "genere_desc":
+                    games=games.OrderByDescending(s=>s.Genere);
+                    break;
+                default:
+                    games=games.OrderBy(s=>s.Title);
+                    break;
+            }
+            int pageSize=3;
+            return View(await PaginatedList<GameModel>.CreateAsync(games.AsNoTracking(),pageNumber?? 1,pageSize));
         }
         //Create
         public IActionResult Create()
