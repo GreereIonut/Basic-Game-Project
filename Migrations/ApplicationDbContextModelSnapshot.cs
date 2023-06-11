@@ -5,9 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-
 #nullable disable
-
 namespace Games.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
@@ -19,64 +17,46 @@ namespace Games.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
             modelBuilder.Entity("Games.Models.GameModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<string>("Genere")
                         .IsRequired()
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
-
                     b.HasKey("Id");
-
                     b.ToTable("Games");
                 });
-
             modelBuilder.Entity("Games.Models.ReviewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int>("Stars")
                         .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("createdDateTime")
                         .HasColumnType("datetime2");
-
                     b.Property<int>("gameId")
                         .HasColumnType("int");
-
                     b.Property<string>("review")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
-
                     b.HasIndex("gameId");
-
                     b.ToTable("Reviews");
                 });
-
             modelBuilder.Entity("Games.Models.ReviewModel", b =>
                 {
                     b.HasOne("Games.Models.GameModel", "Games")
@@ -84,7 +64,6 @@ namespace Games.Migrations
                         .HasForeignKey("gameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
                     b.Navigation("Games");
                 });
 #pragma warning restore 612, 618

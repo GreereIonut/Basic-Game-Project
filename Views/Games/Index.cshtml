@@ -1,12 +1,8 @@
   @model PaginatedList<Games.Models.GameModel>
-
-
 @{
     ViewData["Title"] = "Games";
 }
-
 <h2>Games</h2>
-
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -24,7 +20,6 @@
                 </th>
                 <th>
                     <a asp-action="Index" asp-route-sortOrder="@ViewData["GenereSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Genere</a>
-
                 </th>
             <th></th>
         </tr>
@@ -38,7 +33,6 @@
             <td>
                @item.Genere 
             </td>
-           
             <td>
                 @* <a asp-action="Edit" asp-route-gmaeId="@item.Id">Edit</a> | *@
                 <a asp-action="Review" asp-controller="Reviews" asp-route-gameId="@item.Id">Write a review!</a> |
@@ -48,13 +42,10 @@
 }
     </tbody>
 </table>
-
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
-
-
 @for(int i=1;i<=Model.TotalPages;i++)
 {
     <a asp-action="Index"
@@ -64,15 +55,5 @@
     class="btn btn-primary @(i == Model.PageIndex ? "active" : "")"
     > 
     <small>@i</small>
-
     </a>
 }
-
-
-    
-
-
-
-
-   
-

@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-
 #nullable disable
-
 namespace Games.Migrations
 {
     /// <inheritdoc />
@@ -23,7 +21,6 @@ namespace Games.Migrations
                 {
                     table.PrimaryKey("PK_Games", x => x.Id);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
@@ -45,19 +42,16 @@ namespace Games.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_gameId",
                 table: "Reviews",
                 column: "gameId");
         }
-
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Reviews");
-
             migrationBuilder.DropTable(
                 name: "Games");
         }

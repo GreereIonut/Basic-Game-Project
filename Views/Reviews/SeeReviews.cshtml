@@ -1,11 +1,7 @@
  @model IEnumerable<Games.Models.ReviewModel>
-
  @{
         ViewData["Title"] = "Reviews";
     }
-
-
-
 @* @foreach (var Review in Model){
    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
   <div class="card-header">@Review.UserName</div>
@@ -18,9 +14,6 @@
   </div>
 </div>
 } *@
-
-
-
     <table class="table ">
   <thead>
     <tr class="table-dark">
@@ -45,8 +38,5 @@
     rowNumber++;
     }
 }
-   
   </tbody>
 </table>
-    
-
