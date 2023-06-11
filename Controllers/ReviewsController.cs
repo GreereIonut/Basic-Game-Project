@@ -25,7 +25,7 @@ namespace Games.Controllers
             reviews.gameId = Gameid;
             _db.Reviews.Add(reviews);
             _db.SaveChanges();
-            return RedirectToAction("Index", "Games");
+            return RedirectToAction("SeeReviews",new {Gameid=reviews.gameId});
         }
         public IActionResult SeeReviews(int GameId)
         {
