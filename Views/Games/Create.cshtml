@@ -18,10 +18,13 @@
             <div class=" mb-3">
                 <label class="form-label">Game Name</label>
                 <input asp-for=Title type="text" class="form-control">
+                <span asp-validation-for=Title  class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">Game Genere</label>
                 <input asp-for=Genere type="text" class="form-control">
+                <span asp-validation-for=Genere class="text-danger"></span>
+
             </div>
 
             <div class="mb-3">
@@ -30,11 +33,6 @@
         </form>
 
             </div>
-
-            <div class="card">
-
-            </div>
-
         </div>
 
             </div>

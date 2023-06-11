@@ -71,6 +71,10 @@ namespace Games.Controllers
             }
             int pageSize=3;
             return View(await PaginatedList<GameModel>.CreateAsync(games.AsNoTracking(),pageNumber?? 1,pageSize));
+
+           
+          
+            
         }
         //Create
         public IActionResult Create()
@@ -82,10 +86,14 @@ namespace Games.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(GameModel game)
         {
-            
+            if(ModelState.IsValid)
+            {
+
             _db.Games.Add(game);
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
+            }
+            return View(game);
         }
 
 

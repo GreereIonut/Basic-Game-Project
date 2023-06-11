@@ -20,18 +20,24 @@
             <div class=" mb-3">
                 <label class="form-label">User Name</label>
                 <input asp-for=userName type="text" class="form-control">
+                <span asp-validation-for=userName class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">Stars</label>
                 <input asp-for=stars type="text" class="form-control">
+                <span asp-validation-for=stars class="text-danger"></span>
+
             </div>
              <div class="mb-3">
                 <label class="form-label">Review</label>
                 <input asp-for=review type="text" class="form-control">
+                    <span asp-validation-for="review" class="text-danger"></span>
+
             </div>
              <div class="mb-3">
                 <label class="form-label">Date</label>
                 <input asp-for=createdDateTime type="text" class="form-control">
+                 <span asp-validation-for="createdDateTime" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
