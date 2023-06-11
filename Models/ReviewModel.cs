@@ -20,12 +20,12 @@ namespace Games.Models
         [Required]
 
         public int Stars { get; set; }
-
-        public DateTime createdDateTime { get; set; }=DateTime.Now;
+        [DataType(DataType.Date)]
+        public DateTime createdDateTime { get; set; }
         [Required]
         [ForeignKey("Games")]
         public int gameId { get; set; }
         public virtual GameModel? Games { get; set; }
-        
+
     }
 }
