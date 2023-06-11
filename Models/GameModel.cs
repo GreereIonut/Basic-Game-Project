@@ -11,11 +11,11 @@ namespace Games.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(75)]
+        [StringLength(75,ErrorMessage ="The{0} value cannot exceed {1} characters.")]
         public string? Title { get; set; }
 
         [Required]
-        [StringLength(75)]
+         [StringLength(75,ErrorMessage ="The{0} value cannot exceed {1} characters.")]
         public string? Genere { get; set; }
         
 
